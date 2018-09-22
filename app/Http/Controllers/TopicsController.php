@@ -24,8 +24,10 @@ class TopicsController extends Controller
 		return view('topics.index', compact('topics'));
 	}
 
-    public function show(Topic $topic)
+    public function show(Request $request, Topic $topic)
     {
+        $topic->visits()->increment();
+
         return view('topics.show', compact('topic'));
     }
 

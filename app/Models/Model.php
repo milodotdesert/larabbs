@@ -15,5 +15,10 @@ class Model extends EloquentModel
     {
         return $query->orderBy('order', 'desc');
     }
+    
+    public function visits()
+    {
+        return visits($this);
+    }
 
 }
