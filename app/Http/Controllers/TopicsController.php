@@ -26,7 +26,7 @@ class TopicsController extends Controller
 
     public function show(Request $request, Topic $topic)
     {
-        $topic->visits()->increment();
+        $topic->increment('view_count');
 
         return view('topics.show', compact('topic'));
     }

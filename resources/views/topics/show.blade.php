@@ -38,7 +38,7 @@
                         <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                         {{ $topic->reply_count }}
                         ⋅
-                        {{ $topic->visits()->count() }} 阅读
+                        {{ $topic->view_count }} 阅读
                     </div>
 
                     <div class="topic-body">
@@ -50,9 +50,14 @@
                         <a href="{{ route('topics.edit', $topic->id) }}" class="btn btn-default btn-xs" role="button">
                             <i class="glyphicon glyphicon-edit"></i> 编辑
                         </a>
-                        <a href="#" class="btn btn-default btn-xs" role="button">
-                            <i class="glyphicon glyphicon-trash"></i> 删除
-                        </a>
+                        <form action="{{ route('topics.destroy', $topic->id) }}" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class="btn btn-default btn-xs pull-left" style="margin-left: 6px">
+                                <i class="glyphicon glyphicon-trash"></i>
+                                删除
+                            </button>
+                        </form>
                     </div>
 
                 </div>
